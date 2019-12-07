@@ -1,3 +1,45 @@
+import Vue from 'vue'
+import App from './app.vue'
+import router from '../router/router.js'
+import store from '../store/store.js'
+import '../plugins/element.js'
+
+Vue.config.productionTip = false
+
+// $httpプロパティ追加
+Vue.prototype.$http = (url, opts) => fetch(url, opts)
+
+Vue.mixin({
+  created: function() {
+    let { title, keyword, description } = this.$data;
+    let base_title = "Ruby on Rails Tutorial Sample App";
+    if (title) { 
+      document.title = `${title} | ${base_title}`; 
+    } else {
+      document.title = base_title;
+    }
+    if (keyword) {
+      document.querySelector("meta[name='keyword']").
+        setAttribute('content', keyword);
+    }
+    if (description) {
+      document.querySelector("meta[name='description']").
+        setAttribute('content', description);
+    }
+  }
+});
+
+new Vue({
+  router, // this.$routerで参照可能になる
+  store,  // this.$storeで参照可能になる
+  render: h => h(App)
+}).$mount('#app')
+
+
+
+
+
+
 /* eslint no-console: 0 */
 // Run this example by adding <%= javascript_pack_tag 'hello_vue' %> (and
 // <%= stylesheet_pack_tag 'hello_vue' %> if you have styles in your component)
@@ -5,18 +47,19 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from '../app.vue'
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    render: h => h(App)
-  }).$mount()
-  document.body.appendChild(app.$el)
+// ADD:
+// import Vue from 'vue'
+// import App from 'app.vue'
 
-  console.log(app)
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     render: h => h(App)
+//   }).$mount()
+//   document.body.appendChild(app.$el)
 
+//   console.log(app)
+// })
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would

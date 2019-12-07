@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  # SAME: self.email = self.email.downcase 左式のselfは省略不可
-  # SAME: before_save { self.email = email.downcase }
+  # same self.email = self.email.downcase 左式のselfは省略不可
+  # same before_save { self.email = email.downcase }
   before_save { email.downcase! }
 
   validates :name, presence: true, length: { maximum: 50 }
