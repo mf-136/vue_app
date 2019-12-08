@@ -1,15 +1,19 @@
 <template>
   <div>
-
   <div>
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+  <el-row>
+  <el-col :span="24"><div class="grid-content bg-purple-light">
+  <h1>Welcome to the Sample App</h1>
+  <h2>
+    This is the home page for the
+    <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
+    sample application.
+  </h2>
+  <el-row><el-button type="primary"><router-link to="/signup">Sign up now!</router-link></el-button></el-row>
+  </div></el-col>
+  </el-row>
+    <a href="http://rubyonrails.org/"><img src="../assets/rails.png" alt="Rails logo"></a>
   </div>
-
 
     <table>
       <tbody>
@@ -52,8 +56,14 @@ export default {
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+  .el-row {
+    margin-bottom: 20px;
+    text-align:center;
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
 </style>

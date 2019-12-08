@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app-header">
     <el-menu mode="horizontal" background-color="#545c64"
       text-color="#fff" active-text-color="#ffd04b">
       <el-menu-item index="1"><router-link to="/">Home</router-link></el-menu-item>
       <el-menu-item index="2"><router-link to="/help">Help</router-link></el-menu-item>
-      <el-menu-item index="3"><router-link to="/">Log in</router-link></el-menu-item>
+      <el-menu-item index="3"><router-link to="#">Log in</router-link></el-menu-item>
       <!-- <el-submenu index="3">
         <template v-slot:title>Log in</template>
         <el-menu-item index="3-1"><a href="https://wings.msn.to/" target="help">Author</a>
@@ -18,27 +18,16 @@
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+
 </script>
 
 
-<style>
-#app {
+<style scoped>
+#app-header {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  width: 800px;
   margin: 0 auto;
   color: #2c3e50;
-  margin-top: 60px;
-}
-
-#app h2 {
-  color: #009;
-}
-
-#nav {
-  margin-bottom: 15px;
+  margin-top: 20px;
 }
 
 .el-menu-item a {

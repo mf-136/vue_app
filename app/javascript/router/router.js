@@ -4,8 +4,11 @@ import Router from 'vue-router'
 import Index from '../components/indexPage.vue'
 import Header from '../components/header.vue'
 import Footer from '../components/footer.vue'
-import Help from '../components/help.vue'
-import About from '../components/about.vue'
+import Help from '../components/helpPage.vue'
+import About from '../components/aboutPage.vue'
+import Contact from '../components/contactPage.vue'
+import Signup from '../components/signupPage.vue'
+
 
 Vue.use(Router)
 
@@ -24,14 +27,40 @@ export default new Router({
       }
     },
     {
+      path: '/signup',
+      name: 'signup',
+      components: {
+        default: Signup,
+        header: Header,
+        footer: Footer
+      }
+    },
+    {
       path: '/help',
       name: 'help',
-      component: Help
+      components: {
+        default: Help,
+        header: Header,
+        footer: Footer
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: About
+      components: {
+        default: About,
+        header: Header,
+        footer: Footer
+      }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      components: {
+        default: Contact,
+        header: Header,
+        footer: Footer
+      }
     }
   ]
 })
