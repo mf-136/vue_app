@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
   
-#, only: [:index, :show]
   namespace :api, {format: 'json'} do
     namespace :v1 do
-      resources :users
+      resources :users, only: [:index, :show, :create]
         # /users: index,create
         # /users/:id: show,update,destroy
         # /users/new: new

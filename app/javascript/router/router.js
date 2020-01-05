@@ -7,7 +7,8 @@ import Footer from '../components/footer.vue'
 import Help from '../components/helpPage.vue'
 import About from '../components/aboutPage.vue'
 import Contact from '../components/contactPage.vue'
-import Signup from '../components/signupPage.vue'
+import ShowPage from '../components/showPage.vue'
+import NewPage from '../components/newPage.vue'
 
 
 Vue.use(Router)
@@ -27,13 +28,22 @@ export default new Router({
       }
     },
     {
-      path: '/signup',
-      name: 'signup',
+      path: '/users/new',
+      name: 'newPage',
       components: {
-        default: Signup,
+        default: NewPage,
         header: Header,
         footer: Footer
       }
+    },
+    { 
+      path: '/users/:id(\\d+)',
+      name: 'showPage', 
+      components: {
+        default: ShowPage,
+        header: Header,
+        footer: Footer
+      },
     },
     {
       path: '/help',

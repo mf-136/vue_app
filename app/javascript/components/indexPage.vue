@@ -9,7 +9,7 @@
     <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
     sample application.
   </h2>
-  <el-row><el-button type="primary"><router-link to="/signup">Sign up now!</router-link></el-button></el-row>
+  <el-row><el-button type="primary"><router-link to="/users/new">Sign up now!</router-link></el-button></el-row>
   </div></el-col>
   </el-row>
     <a href="http://rubyonrails.org/"><img src="../assets/rails.png" alt="Rails logo"></a>
@@ -24,6 +24,7 @@
           <th>password_digest</th>
         </tr>
         <tr v-for="u in users" :key="u.id">
+          <td><router-link v-bind:to="{ name: 'showPage', params: { id: u.id } }">{{ u.id }}</router-link></td>
           <td>{{ u.id }}</td>
           <td>{{ u.name }}</td>
           <td>{{ u.email }}</td>

@@ -4,7 +4,6 @@
 import axios from 'axios';
 
 const setToken = (params) => {
-  
   const tags = document.getElementsByTagName("meta");
   for (let i=0; i<tags.length; i++) {
     if (tags[i].name === "csrf-token") {

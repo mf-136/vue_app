@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import App from './app.vue'
 import router from '../router/router.js'
-import store from '../store/store.js'
+// import store from '../store/store.js'
 import '../plugins/element.js'
+// import axios from 'axios'
+// import VueAxiosPlugin from '../filter/token_csrf.js'
+
+// Vue.use(VueAxiosPlugin, { axios: axios }) 
 
 Vue.config.productionTip = false
 
@@ -29,11 +33,21 @@ Vue.mixin({
   }
 });
 
-new Vue({
-  router, // this.$routerで参照可能になる
-  store,  // this.$storeで参照可能になる
-  render: h => h(App)
-}).$mount('#app')
+// new Vue({
+//   router, // this.$routerで参照可能になる
+//   // store,  // this.$storeで参照可能になる
+//   render: h => h(App)
+// }).$mount('#app')
+
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new Vue({
+    router,
+    render: h => h(App)
+  }).$mount('#app')
+  document.body.appendChild(app.$el)
+
+  console.log(app)
+})
 
 
 
