@@ -3,7 +3,7 @@
     <el-menu mode="horizontal" background-color="#545c64"
       text-color="#fff" active-text-color="#ffd04b">
       <el-menu-item index="1"><router-link to="/">Home</router-link></el-menu-item>
-      <el-menu-item index="2"><router-link to="/help">Help</router-link></el-menu-item>
+      <el-menu-item index="2"><router-link to="/users/list">Users</router-link></el-menu-item>
       <el-menu-item index="3"><router-link to="#">Log in</router-link></el-menu-item>
 
       <!-- <el-submenu index="3">

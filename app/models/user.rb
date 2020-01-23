@@ -9,8 +9,9 @@ class User < ApplicationRecord
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  has_secure_password
+  has_secure_password # has_secure_passwordメソッドは存在性のバリデーションもしてくれるのですが、これは新しくレコードが追加されたときだけに適用される性質を持っています。したがって、例えばユーザーが ' ' (6文字分の空白スペース) といった文字列をパスワード欄に入力して更新しようとすると、バリデーションが適用されずに更新されてしまう問題が発生してしまうのです。
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
 
 
 

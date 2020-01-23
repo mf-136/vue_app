@@ -1,7 +1,7 @@
 <template>
-  <div id="new">
-    <h1>アカウントを作成</h1>
-    <UserForm :errors="errors" :user="user" button-name="登録する" @click="createUser"></UserForm>
+  <div id="edit">
+    <h1>アカウント情報の変更</h1>
+    <UserForm :errors="errors" :user="user" button-name="変更する" @click="updateUser"></UserForm>
   </div>
 </template>
 
@@ -17,24 +17,26 @@ export default {
   data: function () {
     return {
       user: {
+        id: '',
         name: '',
-        email: '',
-        password: '',
-        password_confirmation: ''
+        email: ''
       },
       errors: '',
 
-      title: 'new',
+      title: 'edit',
     }
   },
+  mounted () {
+    axios
+      .get(`/api/v1/users/${this.$route.params.id}.json`)
+      .then(response => (this.user = response.data))
+  },
   methods: {
-    createUser: function() {
+    updateUser: function() {
       axios
-        .post('/api/v1/users', { user: this.user})
+        .patch(`/api/v1/users/${this.user.id}`,{ user: this.user})
         .then(response => {
-          let e = response.data;
-          // 詳細画面に遷移する処理。template で遷移先を定義する際は <router-link :to="..."> 
-          this.$router.push({ name: 'showPage', params: { id: e.id } });
+          this.$router.push({ name: 'showPage', params: { id: this.user.id } });
         })
         .catch(error => {
           console.error(error);

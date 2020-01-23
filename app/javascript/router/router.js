@@ -4,11 +4,12 @@ import Router from 'vue-router'
 import Index from '../components/indexPage.vue'
 import Header from '../components/header.vue'
 import Footer from '../components/footer.vue'
-import Help from '../components/helpPage.vue'
+import List from '../components/listPage.vue'
 import About from '../components/aboutPage.vue'
 import Contact from '../components/contactPage.vue'
 import ShowPage from '../components/showPage.vue'
 import NewPage from '../components/newPage.vue'
+import EditPage from '../components/editPage.vue'
 
 
 Vue.use(Router)
@@ -45,11 +46,20 @@ export default new Router({
         footer: Footer
       },
     },
-    {
-      path: '/help',
-      name: 'help',
+    { 
+      path: '/users/:id(\\d+)/edit',
+      name: 'editPage', 
       components: {
-        default: Help,
+        default: EditPage,
+        header: Header,
+        footer: Footer
+      },
+    },
+    {
+      path: '/users/list',
+      name: 'list',
+      components: {
+        default: List,
         header: Header,
         footer: Footer
       }

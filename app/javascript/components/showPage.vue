@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="show">
     <table>
       <tbody>
         <tr>
@@ -25,7 +25,9 @@ import axios from 'axios';
 export default {
   data: function () {
     return {
-      user: {}
+      user: {},
+
+      title: 'show',
     }
   },
   mounted () {

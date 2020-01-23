@@ -9,7 +9,7 @@ class Api::V1::UsersController < ApiController
   # protect_from_forgery except: [:create, :update, :destroy]
   # CSRF対策の除外設定を追加する。
 
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :update, :destroy]
 
   # 拾えなかったExceptionが発生したら500 Internal server errorを応答する
   rescue_from Exception, with: :render_status_500
@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApiController
 
 
   def index
-    @users = User.all # same User.select(:id, :name)
+    @users = User.all.order(:id) # same User.select(:id, :name)
     render json: @users
   end
 
@@ -38,15 +38,42 @@ class Api::V1::UsersController < ApiController
     end
   end
 
+  def update
+    if (params[:user][:password].blank?) && (!(@user.update(user_params)))
+      @user.errors.add(:password, :blank)
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    elsif params[:user][:password].blank?
+      @user.errors.add(:password, :blank)
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    # elsif !([:user][:password].blank?) && ([:user][:password_confirmation].blank?)
+    #   @user.errors.add(:password_confirmation," confirmation doesn't match Password")
+    #   render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    elsif @user.update(user_params)
+      # debugger
+      head :no_content
+    else
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @user.destroy! # destroy! メソッドを使うことで削除に失敗した場合に Exception を発生させて、rescue_from Exception で拾うようにしています。
+    head :no_content
+  end
+
   private
 
     def set_user
       @user = User.find(params[:id])
+      # @user = User.find(params[:id]).select("id, name, email")
+      # @user = User.select('id','name', 'email')
     end
 
     def user_params
+      # NOTE: userパラメータがなかったときはActionController::ParameterMissingのエラーが起きるようになっています。下記の設定をしてあるとuserパラメータの代わりに{}がデフォルト値として評価されるようになります。
       # params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation)
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      # NOTE: このコードの戻り値は、許可された属性のみが含まれたparamsのハッシュです (:user属性がない場合はエラーになります)。
     end
 
     def render_status_404(exception)

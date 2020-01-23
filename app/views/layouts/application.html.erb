@@ -3,9 +3,9 @@
   <head>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <title>dummy</title>
-    <meta name="keyword" content="dummy">
-    <meta name="description" content="dummy">
+    <title></title>
+    <meta name="keyword" content="">
+    <meta name="description" content="">
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
     </script>
@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <div id="app"></div><%# note id=appがないとVueが張り付かない %>
+    <div id="app"></div><%# NOTE: id=appがないとVueが張り付かない %>
     <%= yield %>
     <%= debug(params) if Rails.env.development? %>
   </body>

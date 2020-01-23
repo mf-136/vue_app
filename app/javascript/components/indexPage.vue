@@ -1,6 +1,5 @@
 <template>
-  <div>
-  <div>
+  <div id="index">
   <el-row>
   <el-col :span="24"><div class="grid-content bg-purple-light">
   <h1>Welcome to the Sample App</h1>
@@ -9,29 +8,10 @@
     <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
     sample application.
   </h2>
-  <el-row><el-button type="primary"><router-link to="/users/new">Sign up now!</router-link></el-button></el-row>
+  <el-row><el-button type="primary" round><router-link to="/users/new">アカウント作成</router-link></el-button></el-row>
   </div></el-col>
   </el-row>
     <a href="http://rubyonrails.org/"><img src="../assets/rails.png" alt="Rails logo"></a>
-  </div>
-
-    <table>
-      <tbody>
-        <tr>
-          <th>ID</th>
-          <th>name</th>
-          <th>email</th>
-          <th>password_digest</th>
-        </tr>
-        <tr v-for="u in users" :key="u.id">
-          <td><router-link v-bind:to="{ name: 'showPage', params: { id: u.id } }">{{ u.id }}</router-link></td>
-          <td>{{ u.id }}</td>
-          <td>{{ u.name }}</td>
-          <td>{{ u.email }}</td>
-          <td>{{ u.password_digest }}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template> 
 
@@ -44,14 +24,8 @@ export default {
       users: [],
       title: 'home',
       keyword: 'mixin, vuejs, component',
-      description: 'アプリ全体に適用されるミックスインの例です。'
+      description: 'アプリ全体に適用されるミックスイン'
     }
-  },
-  // 仮想 DOM が DOM に置き換わるタイミング
-  mounted () {
-    axios
-      .get('/api/v1/users.json')
-      .then(response => (this.users = response.data))
   }
 }
 </script>
