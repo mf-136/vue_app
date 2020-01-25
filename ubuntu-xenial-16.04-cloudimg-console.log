@@ -657,3 +657,4 @@ ubuntu-xenial login: [   27.036756] cloud-init[1515]: Cloud-init v. 19.2-36-g059
 [[0;32m  OK  [0m] Started resolvconf-pull-resolved.service.
          Starting resolvconf-pull-resolved.service...
 [[0;32m  OK  [0m] Started resolvconf-pull-resolved.service.
+[[0;32m  OK  [0m] Started Daily apt upgrade and clean activities.
