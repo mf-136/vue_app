@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
+
   # same self.email = self.email.downcase 左式のselfは省略不可
   # same before_save { self.email = email.downcase }
   before_save { email.downcase! }
