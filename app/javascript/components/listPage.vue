@@ -3,24 +3,15 @@
     <table>
       <tbody>
         <tr>
-          <!-- <th>ID</th> -->
           <th>アカウント名</th>
-          <!-- <th>email</th> -->
-          <!-- <th>password_digest</th> -->
         </tr>
         <tr v-for="u in users" :key="u.id">
-          <!-- <td><router-link v-bind:to="{ name: 'showPage', params: { id: u.id } }">{{ u.id }}</router-link></td> -->
           <td>{{ u.name }}</td>
-          <!-- <td>{{ u.email }}</td> -->
-          <!-- <td>{{ u.password_digest }}</td> -->
           <td><el-row><el-button size="mini" type="info" round><router-link v-bind:to="{ name: 'showPage', params: { id: u.id } }">詳細</router-link></el-button></el-row></td>
           <td><el-row><el-button size="mini" round><router-link v-bind:to="{ name: 'editPage', params: { id: u.id } }">編集</router-link></el-button></el-row></td>
           <td><el-row><el-button size="mini" type="danger" @click="dialogVisible = true; deleteTarget = u.id" round>削除</el-button></el-row></td>
 
-          <el-dialog
-            title="削除確認"
-            :visible.sync="dialogVisible"
-            width="30%">
+          <el-dialog title="削除確認" :visible.sync="dialogVisible" width="30%">
             <span>本当に削除しますか？</span>
             <span slot="footer" class="dialog-footer">
               <el-button @click="dialogVisible = false">キャンセル</el-button>

@@ -7,24 +7,24 @@
         </ul>
       </el-form-item>
       
-      <el-form-item label="Name">
+      <el-form-item label="アカウント名">
         <el-input type="text" size="large" v-model="user.name"></el-input>
       </el-form-item>
-      <el-form-item label="Email">
+      <el-form-item label="メールアドレス">
         <el-input type="email" size="large" v-model="user.email"></el-input>
       </el-form-item>
-      <el-form-item label="Password">
+      <el-form-item label="パスワード">
         <el-input type="password" size="large" v-model="user.password" v-if="mask === 'password'"></el-input>
         <el-input type="text" size="large" v-model="user.password" v-if="mask === 'text'"></el-input>
       </el-form-item>
-      <el-form-item label="Confirmation">
+      <el-form-item label="パスワード確認">
         <el-input type="password" size="large" v-model="user.password_confirmation"></el-input>
       </el-form-item>
 
       <label ><input type="checkbox" v-model="mask" true-value="text" false-value="password"/>パスワードを表示する</label> 
 
       <el-row><el-button type="primary"  @click.prevent="$emit('click')" v-once>{{ buttonName }}</el-button></el-row>
-    <!-- .prevent と続いていることで、通常の submit で処理されるページリロードを行わないようにします。これは event.preventDefault() と同じ効果 -->
+      <!-- .prevent と続いていることで、通常の submit で処理されるページリロードを行わないようにします。これは event.preventDefault() と同じ効果 -->
     </el-form>
   </div>
 </template>
