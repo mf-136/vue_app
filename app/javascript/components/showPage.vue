@@ -27,7 +27,7 @@
             <el-input type="textarea" rows="10" v-model="micropost.content"></el-input>
           </el-form-item>
           <el-row>
-            <el-button type="primary" @click.prevent="add(); createMicropost()" round>つぶやく</el-button>
+            <el-button type="primary" @click.prevent="createMicropost()" round>つぶやく</el-button>
           </el-row>
         </el-form>
       </el-aside>
@@ -55,7 +55,7 @@ export default {
     return {
       user: {},
       micropost: {},
-      userMicroposts: [],
+      userMicroposts: [{content:'',created_at:''}],
       errors: '',
 
       title: 'show',
@@ -71,12 +71,14 @@ export default {
   },
   methods: {
     add: function(){
-      this.userMicroposts.push(this.micropost.content)
     },
     createMicropost: function() {
       axios
         .post('/api/v1/microposts', { micropost: this.micropost, id: this.user.id})
-        .then()
+        .then(response => {
+          let e = response.data;
+          this.userMicroposts.push(e)
+        })
         .catch(error => {
           console.error(error);
           if (error.response.data && error.response.data.errors) {
