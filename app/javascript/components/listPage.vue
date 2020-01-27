@@ -46,9 +46,9 @@ export default {
   
   methods: {
       deleteUser: function() {
-      if (this.deleteTarget <= 0) {
-        console.warn('deleteTarget should be grater than zero.');
-        return;
+        if (this.deleteTarget <= 0) {
+          console.warn('deleteTarget should be grater than zero.');
+          return;
       }
       axios
         .delete(`/api/v1/users/${this.deleteTarget}`)
@@ -63,7 +63,6 @@ export default {
           }
         });
         },
-        
         updateUsers: function() {
           axios
             .get('/api/v1/users.json')

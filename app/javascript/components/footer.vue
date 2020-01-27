@@ -4,7 +4,7 @@
       <el-menu-item index="1"><router-link to="/about">About</router-link></el-menu-item>
       <el-menu-item index="2"><router-link to="/contact">Contact</router-link></el-menu-item>
       <el-submenu index="3">
-        <template slot="title">reference</template>
+        <template slot="title">Reference</template>
         <el-menu-item index="2-1"><a href="https://railsguides.jp/">Rails公式</a></el-menu-item>
         <el-menu-item index="2-2"><a href="https://jp.vuejs.org/index.html">Vue.js公式</a></el-menu-item>
         <el-menu-item index="2-3"><a href="https://www.ruby-lang.org/ja/">Ruby公式</a></el-menu-item>

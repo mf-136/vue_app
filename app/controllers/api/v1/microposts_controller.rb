@@ -1,6 +1,6 @@
 class Api::V1::MicropostsController < ApiController
 
-  before_action :set_user, only: [:show, :create, :destroy]
+  before_action :set_user, only: [:show, :create]
 
 
   rescue_from Exception, with: :render_status_500
@@ -25,6 +25,9 @@ class Api::V1::MicropostsController < ApiController
   end
 
   def destroy
+    @micropost = Micropost.find(params[:id])
+    @micropost.destroy!
+    head :no_content
   end
 
 

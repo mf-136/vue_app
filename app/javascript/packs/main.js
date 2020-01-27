@@ -13,6 +13,7 @@ Vue.config.productionTip = false
 // $httpプロパティ追加
 Vue.prototype.$http = (url, opts) => fetch(url, opts)
 
+// titleタグ生成
 Vue.mixin({
   created: function() {
     let { title, keyword, description } = this.$data;

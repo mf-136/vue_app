@@ -24,7 +24,7 @@
               </ul>
           </el-form-item>
           <el-form-item>
-            <el-input type="textarea" rows="10" v-model="micropost.content"></el-input>
+            <el-input type="textarea" placeholder="いまどうしてる？" rows="10" v-model="micropost.content"></el-input>
           </el-form-item>
           <el-row>
             <el-button type="primary" @click.prevent="createMicropost()" round>つぶやく</el-button>
@@ -37,7 +37,8 @@
             <el-timeline-item placement="top">
               <el-card>
                 <h4>{{ m.content }}</h4>
-                <p>{{ user.name }} committed {{ m.created_at }}</p>
+                <p>{{ user.name }} posted {{ m.created_at }}</p>
+                <el-button type="primary" icon="el-icon-delete" @click="deleteMicropost(m.id)"></el-button>
               </el-card>
             </el-timeline-item>
           </el-timeline>
@@ -65,19 +66,16 @@ export default {
     axios
       .get(`/api/v1/users/${this.$route.params.id}.json`)
       .then(response => (this.user = response.data));
-    axios
-      .get(`/api/v1/microposts/${this.$route.params.id}.json`)
-      .then(response => (this.userMicroposts = response.data));
+    this.updateMicroposts();
   },
   methods: {
-    add: function(){
-    },
     createMicropost: function() {
       axios
         .post('/api/v1/microposts', { micropost: this.micropost, id: this.user.id})
         .then(response => {
           let e = response.data;
-          this.userMicroposts.unshift(e)
+          this.userMicroposts.unshift(e);
+          this.micropost = {};
         })
         .catch(error => {
           console.error(error);
@@ -85,7 +83,25 @@ export default {
             this.errors = error.response.data.errors;
           }
         });
-    }
+    },
+    deleteMicropost: function(id) {
+      axios
+        .delete(`/api/v1/microposts/${id}`)
+        .then(response => {
+          this.updateMicroposts();
+        })
+        .catch(error => {
+          console.error(error);
+          if (error.response.data && error.response.data.errors) {
+            this.errors = error.response.data.errors;
+          }
+        });
+      },
+      updateMicroposts: function() {
+        axios
+          .get(`/api/v1/microposts/${this.$route.params.id}.json`)
+          .then(response => (this.userMicroposts = response.data));
+      }
   }
 }
 </script>
