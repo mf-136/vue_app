@@ -77,7 +77,7 @@ export default {
         .post('/api/v1/microposts', { micropost: this.micropost, id: this.user.id})
         .then(response => {
           let e = response.data;
-          this.userMicroposts.push(e)
+          this.userMicroposts.unshift(e)
         })
         .catch(error => {
           console.error(error);
