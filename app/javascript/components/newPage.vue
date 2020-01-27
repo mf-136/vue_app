@@ -33,7 +33,6 @@ export default {
         .post('/api/v1/users', { user: this.user})
         .then(response => {
           let e = response.data;
-          // 詳細画面に遷移する処理。template で遷移先を定義する際は <router-link :to="..."> 
           this.$router.push({ name: 'showPage', params: { id: e.id } });
         })
         .catch(error => {

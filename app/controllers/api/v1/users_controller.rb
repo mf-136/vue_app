@@ -70,10 +70,8 @@ class Api::V1::UsersController < ApiController
     end
 
     def user_params
-      # NOTE: userパラメータがなかったときはActionController::ParameterMissingのエラーが起きるようになっています。下記の設定をしてあるとuserパラメータの代わりに{}がデフォルト値として評価されるようになります。
-      # params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation)
+      # params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation)       # NOTE: userパラメータがなかったときはActionController::ParameterMissingのエラーが起きるようになっています。下記の設定をしてあるとuserパラメータの代わりに{}がデフォルト値として評価されるようになります。
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-      # NOTE: このコードの戻り値は、許可された属性のみが含まれたparamsのハッシュです (:user属性がない場合はエラーになります)。
     end
 
     def render_status_404(exception)

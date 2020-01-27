@@ -24,7 +24,6 @@
       <label ><input type="checkbox" v-model="mask" true-value="text" false-value="password"/>パスワードを表示する</label> 
 
       <el-row><el-button type="primary"  @click.prevent="$emit('click')" v-once>{{ buttonName }}</el-button></el-row>
-      <!-- .prevent と続いていることで、通常の submit で処理されるページリロードを行わないようにします。これは event.preventDefault() と同じ効果 -->
     </el-form>
   </div>
 </template>

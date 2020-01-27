@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         # /users/:id: show,update,destroy
         # /users/new: new
         # /users/:id/edit: edit
-      resources :microposts,          only: [:create, :destroy]
+      resources :microposts, only: [:index,:show, :create, :update, :destroy]
     end
   end
 

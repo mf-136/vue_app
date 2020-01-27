@@ -1,10 +1,7 @@
 <template>
   <div>
-<h1>Contact</h1>
-<p>
-  Contact the Ruby on Rails Tutorial about the sample app at the
-  <a href="https://railstutorial.jp/contact">contact page</a>.
-</p>
+    <h1>Contact Page</h1>
+      <h2>作成中</h2>
   </div>
 </template> 
 

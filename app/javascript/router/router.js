@@ -10,6 +10,8 @@ import Contact from '../components/contactPage.vue'
 import ShowPage from '../components/showPage.vue'
 import NewPage from '../components/newPage.vue'
 import EditPage from '../components/editPage.vue'
+import MicropostPage from '../components/micropostPage.vue'
+
 
 
 Vue.use(Router)
@@ -60,6 +62,15 @@ export default new Router({
       name: 'list',
       components: {
         default: List,
+        header: Header,
+        footer: Footer
+      }
+    },
+    {
+      path: '/microposts',
+      name: 'microposts',
+      components: {
+        default: MicropostPage,
         header: Header,
         footer: Footer
       }

@@ -33,11 +33,6 @@ Vue.mixin({
   }
 });
 
-// new Vue({
-//   router, // this.$routerで参照可能になる
-//   // store,  // this.$storeで参照可能になる
-//   render: h => h(App)
-// }).$mount('#app')
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
@@ -48,6 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log(app)
 })
+
+
+
+// new Vue({
+//   router, // this.$routerで参照可能になる
+//   // store,  // this.$storeで参照可能になる
+//   render: h => h(App)
+// }).$mount('#app')
+
 
 
 

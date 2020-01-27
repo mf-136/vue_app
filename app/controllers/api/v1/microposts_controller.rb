@@ -1,7 +1,22 @@
 class Api::V1::MicropostsController < ApiController
 
+  before_action :set_user, only: [:show, :create, :destroy]
+
+
+  rescue_from Exception, with: :render_status_500
+  rescue_from ActiveRecord::RecordNotFound, with: :render_status_404
+
+  def index
+    @micropost = Micropost.all
+    render json: @micropost
+  end
+
+  def show
+    render json: Micropost.where("user_id = ?", params[:id])
+  end
+
   def create
-    @micropost = current_user.microposts.build(micropost_params)
+    @micropost = @user.microposts.build(micropost_params)
     if @micropost.save
       render json: @micropost, status: :created
     else
@@ -16,15 +31,20 @@ class Api::V1::MicropostsController < ApiController
 
   private
 
+  def set_user
+    @user ||= User.find(params[:id])
+  end
+
   def micropost_params
     params.require(:micropost).permit(:content)
   end
 
-    # 現在ログイン中のユーザーを返す (いる場合)
-    def current_user
-      if session[:user_id]
-        @current_user ||= User.find_by(id: session[:user_id])
-      end
-    end
+  def render_status_404(exception)
+    render json: { errors: [exception] }, status: 404
+  end
+
+  def render_status_500(exception)
+    render json: { errors: [exception] }, status: 500
+  end
 
 end

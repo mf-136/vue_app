@@ -40,7 +40,7 @@ export default {
     }
   },
 
-  mounted () {   // 仮想 DOM が DOM に置き換わるタイミング
+  mounted () {   
     this.updateUsers();
   },
   
