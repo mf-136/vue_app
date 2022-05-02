@@ -37,7 +37,7 @@
             <el-timeline-item placement="top">
               <el-card>
                 <h4>{{ m.content }}</h4>
-                <p>{{ user.name }} posted {{ m.created_at }}</p>
+                <!-- <p>{{ user.name }} posted {{ m.created_at }}</p> -->
                 <el-button type="primary" icon="el-icon-delete" @click="deleteMicropost(m.id)"></el-button>
               </el-card>
             </el-timeline-item>

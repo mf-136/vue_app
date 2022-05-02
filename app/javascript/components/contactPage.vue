@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Contact Page</h1>
+    <h1>コンタクトページ</h1>
       <h2>作成中</h2>
   </div>
 </template> 

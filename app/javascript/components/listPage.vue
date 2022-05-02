@@ -7,7 +7,7 @@
         </tr>
         <tr v-for="u in users" :key="u.id">
           <td>{{ u.name }}</td>
-          <td><el-row><el-button size="mini" type="info" round><router-link v-bind:to="{ name: 'showPage', params: { id: u.id } }">詳細</router-link></el-button></el-row></td>
+          <td><el-row><el-button size="mini" round><router-link v-bind:to="{ name: 'showPage', params: { id: u.id } }">詳細</router-link></el-button></el-row></td>
           <td><el-row><el-button size="mini" round><router-link v-bind:to="{ name: 'editPage', params: { id: u.id } }">編集</router-link></el-button></el-row></td>
           <td><el-row><el-button size="mini" type="danger" @click="dialogVisible = true; deleteTarget = u.id" round>削除</el-button></el-row></td>
 

@@ -30,13 +30,14 @@ export default {
 <style scoped>
   .el-row {
     margin-bottom: 20px;
+    padding: 40px 20px;
     text-align:  center;
   }
   .el-col {
     border-radius: 4px;
   }
   .bg-purple-light {
-    background: #e5e9f2;
+    background: #ebfcf1;
   }
   .grid-content {
   border-radius: 4px;

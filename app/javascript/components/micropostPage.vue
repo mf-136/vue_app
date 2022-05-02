@@ -7,7 +7,7 @@
             <el-timeline-item placement="top">
               <el-card>
                 <h4>{{ m.content }}</h4>
-                <p>posted {{ m.created_at }}</p>
+                <!-- <p>posted {{ m.created_at }}</p> -->
               </el-card>
             </el-timeline-item>
           </el-timeline>
