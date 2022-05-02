@@ -10,10 +10,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
     </script>
     <![endif]-->
+    <%= javascript_pack_tag 'application', 'main' %>
+    <%= stylesheet_pack_tag 'application', 'main' %>
   </head>
 
   <body>
     <div id="app"></div>
-    <%= yield %>
+    <%# <%= yield %> 
   </body>
 </html>

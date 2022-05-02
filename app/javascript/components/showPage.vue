@@ -32,7 +32,7 @@
         </el-form>
       </el-aside>
       <el-main>
-        <div class="block">
+        <div class="block" v-cloak>
           <el-timeline v-for="m in userMicroposts" :key="m.id">
             <el-timeline-item placement="top">
               <el-card>
@@ -107,6 +107,9 @@ export default {
 </script>
 
 <style scoped>
+[v-cloak] {
+  display: none;
+}
 .el-row {
   margin-bottom: 20px;
   text-align:  center;

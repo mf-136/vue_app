@@ -3,8 +3,8 @@
     <el-row>
       <el-col :span="24">
         <div class="grid-content bg-purple-light">
-          <h1>Sample Appへようこそ！</h1>
-            <h2>このページはHomeページです。まだアカウントを作成していない人は、以下をクリックしてアカウントを作成してください。</h2>
+          <h1>つぶやきアプリへようこそ！</h1>
+            <h2>まだアカウントを作成していない人は、以下をクリックしてアカウントを作成してください。</h2>
           <el-row>
             <el-button type="primary" round><router-link to="/users/new">アカウント作成</router-link></el-button>
           </el-row>

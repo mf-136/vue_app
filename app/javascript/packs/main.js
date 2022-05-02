@@ -17,11 +17,11 @@ Vue.prototype.$http = (url, opts) => fetch(url, opts)
 Vue.mixin({
   created: function() {
     let { title, keyword, description } = this.$data;
-    let base_title = "Sample App";
+    let base_title = "つぶやきアプリ";
     if (title == "") { 
       document.title = base_title;
     } else {
-      document.title = `${title} | ${base_title}`; 
+      document.title = `${base_title}`; 
     }
     if (keyword) {
       document.querySelector("meta[name='keyword']").
